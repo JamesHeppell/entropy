@@ -38,7 +38,7 @@
                 </div>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="https://jamesheppell.github.io/raps/rules">Rules<span class="sr-only"></span></a>
+                <a class="nav-link" href="#" onclick="showRules();">Rules<span class="sr-only"></span></a>
               </li>
             </ul>
             <form class="form-inline my-2 my-lg-0">
@@ -55,10 +55,13 @@
         </div>
         </div>
         
-        <div class="container">
+        <div class="container" id="mainSection">
         
             <div class="row">
                 <div class="column left">
+                    <div>
+                        <button id="rulesButton" class="button" onclick="showRules();">Rules</button>
+                    </div>
                     <div>
                         <button id="resetCanvas" class="button" onclick='draw();'>Reset</button>
                     </div>
@@ -87,6 +90,41 @@
             </div>
         
         </div>
+        
+        <div class="container hideSection" id="rulesSection">
+        
+            <div>
+                <h2>Aim</h2>
+                <p>Entropy consists of two players, <i>order</i> and <i>chaos</i>. The aim of <i>order</i> is to score as many points as possible, and the aim of <i>chaos</i> is to stop  <i>order</i> from scoring points. Ideally play two games one as <i>chaos</i> and one as <i>order</i> and the highest <i>order</i> score wins.</p>
+                <h2>Components</h2>
+                <p>There are 49 peices in total, 7 lots of 7 different colours.</p>
+                <h2>Game Play</h2>
+                <p>The two players <i>chaos</i> and <i>order</i> take it in turns to add pieces to the board and move them around until the board is full. Each turn consists of the following:
+                <ul>
+                    <li><i>Chaos</i> places a piece onto the board in an empty position</li>
+                    <li>Order can then move any piece on the board, horizontally or vertically without hoping over any pieces</li>
+                    <li>Repeat the two steps above until the board is full</li>
+                </ul>
+                </p>
+                <h2>Scoring</h2>
+                <p><i>Order</i> scores points for each line of symmetry in each row and column, based on the length of the symmetry. For example: 
+                <ul>
+                    <li>"RR" scores 2 points</li>
+                    <li>"RGR" scores 3 points</li>
+                    <li>"RGGR" scores 2+4 = 6 points</li>
+                    <li>"RRR" scores 2+2+3 = 7 points</li>
+                    <li>"RGRGR" scores 3+3+3+5 = 14 points</li>
+                    <li>"YRGGGRY" scores 7+5+3+2+2 = 19 points</li>
+                </ul>
+                </p>
+            
+                <button class="button"
+                        onclick="unshowRules();">Back</button>
+            </div>
+            
+            
+        
+        </div>
             
         
         <div class="jumbotron jumbotrom-billboard centered" id="footer">
@@ -110,7 +148,15 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
       
     <script type="text/javascript">
+        function showRules(){
+            $("#mainSection").addClass("hideSection");
+            $("#rulesSection").removeClass("hideSection");
+        }
         
+        function unshowRules(){
+            $("#mainSection").removeClass("hideSection");
+            $("#rulesSection").addClass("hideSection");
+        }
         
     </script>
 </html>
