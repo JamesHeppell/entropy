@@ -440,6 +440,9 @@ function drawBlock(iRowCounter, iBlockCounter) {
 		BLOCK_SIZE, BLOCK_SIZE);
 
 	ctx.stroke();
+    
+    //re draw board outline as it gets removed
+    drawBoardOutline();
 }
 
 function getImageCoords(pieceCode, imageBlockSize) {
@@ -465,6 +468,9 @@ function drawPiece(curPiece) {
 		imageBlockSize, imageBlockSize,
 		curPiece.col * BLOCK_SIZE + BLOCK_SIZE * 0.1, curPiece.row * BLOCK_SIZE + BLOCK_SIZE * 0.1,
 		BLOCK_SIZE*0.8, BLOCK_SIZE*0.8);
+    
+    //redraw outline as it gets removed
+    drawBoardOutline();
 }
 
 function removeSelection(selectedPiece) {
@@ -500,6 +506,12 @@ function drawBoard() {
 	}
 
 	// Draw outline
+	drawBoardOutline();
+}
+
+function drawBoardOutline(){
+    // Draw outline
+    ctx.strokeStyle = "black";
 	ctx.lineWidth = 3;
 	ctx.strokeRect(0, 0,
 		NUMBER_OF_ROWS * BLOCK_SIZE,
@@ -529,6 +541,9 @@ function drawOutline(colourToHighlight, ctx, pieceAtBlock){
 		(pieceAtBlock.row * BLOCK_SIZE) + SELECT_LINE_WIDTH,
 		BLOCK_SIZE - (SELECT_LINE_WIDTH * 2),
 		BLOCK_SIZE - (SELECT_LINE_WIDTH * 2));
+    
+    //re draw board outline as it gets removed
+    drawBoardOutline();
 }
 
 function selectPiece(pieceAtBlock) {
@@ -571,6 +586,9 @@ function movePiece(clickedBlock) {
 
 	// Draw the piece in the new position
 	drawPiece(selectedPiece);
+    
+    //re draw board outline as it gets removed
+    drawBoardOutline();
     
     selectedPiece = null;
     calculateScore();
